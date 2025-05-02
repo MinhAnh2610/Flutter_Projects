@@ -1,11 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:second_app/style_text.dart';
 
-class StartScreen extends StatelessWidget {
-  const StartScreen(this.startQuiz, {super.key});
+class QuestionsScreen extends StatefulWidget {
+  const QuestionsScreen({super.key});
 
-  final void Function() startQuiz;
+  @override
+  State<StatefulWidget> createState() {
+    return _QuestionsScreenState();
+  }
+}
 
+class _QuestionsScreenState extends State<QuestionsScreen> {
+  
   @override
   Widget build(BuildContext context) {
     return Center(
@@ -26,10 +31,10 @@ class StartScreen extends StatelessWidget {
           ),
 
           const SizedBox(height: 80,),
-          const StyledText('Learn Flutter the fun way'),
-          const SizedBox(height: 30,),
           OutlinedButton.icon(
-            onPressed: startQuiz, 
+            onPressed: () {
+              
+            }, 
             style: OutlinedButton.styleFrom(
               foregroundColor: Colors.white,
               shape: RoundedRectangleBorder(
