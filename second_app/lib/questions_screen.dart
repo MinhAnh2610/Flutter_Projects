@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:second_app/answer_button.dart';
+import 'package:second_app/data/questions.dart';
 
 class QuestionsScreen extends StatefulWidget {
   const QuestionsScreen({super.key});
@@ -10,41 +12,43 @@ class QuestionsScreen extends StatefulWidget {
 }
 
 class _QuestionsScreenState extends State<QuestionsScreen> {
-  
+  var currentQuestionIndex = 0;
+
+  void answerQuestion() {
+    setState(() {
+      currentQuestionIndex++;
+    }); 
+  }
+
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          // Opacity(
-          //   opacity: 0.6,
-          //   child: Image.asset(
-          //     'assets/images/quiz-logo.png',
-          //     width: 300,
-          //   ),
-          // ),
-          Image.asset(
-            'assets/images/quiz-logo.png',
-            width: 300,
-            color: Colors.white60,
-          ),
+    final currentQuestion = questions[currentQuestionIndex];
 
-          const SizedBox(height: 80,),
-          OutlinedButton.icon(
-            onPressed: () {
-              
-            }, 
-            style: OutlinedButton.styleFrom(
-              foregroundColor: Colors.white,
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.zero,
+    return Container(
+      margin: const EdgeInsets.all(40),
+      child: SizedBox(
+        width: double.infinity,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            Text(
+              currentQuestion.text,
+              style: TextStyle(
+                color: Colors.white,
+                fontSize: 16,
               ),
+              textAlign: TextAlign.center,
             ),
-            icon: const Icon(Icons.arrow_right_alt),
-            label: const Text('Start Quiz'),
-          )
-        ],
+            const SizedBox(height: 30,),
+            ...currentQuestion.getShuffuledAnswers().map((answer) {
+              return AnswerButton(
+                answerText: answer, 
+                onTap: answerQuestion,
+              ); 
+            }),
+          ],
+        ),
       ),
     );
   }
