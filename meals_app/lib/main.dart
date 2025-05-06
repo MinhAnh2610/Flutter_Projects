@@ -3,6 +3,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:meals_app/screens/categories.dart';
 
 final theme = ThemeData(
+  useMaterial3: true,
   colorScheme: ColorScheme.fromSeed(
     seedColor: Colors.indigo,
     brightness: Brightness.dark,
