@@ -1,3 +1,5 @@
+// ignore_for_file: deprecated_member_use
+
 import 'package:flutter/material.dart';
 import 'package:meals_app/models/meal.dart';
 
@@ -30,7 +32,6 @@ class MealDetailsScreen extends StatelessWidget {
               fit: BoxFit.cover,
             ),
             const SizedBox(height: 14),
-            // ignore: deprecated_member_use
             Text(
               'Ingredients',
               style: Theme.of(context).textTheme.titleLarge!.copyWith(
