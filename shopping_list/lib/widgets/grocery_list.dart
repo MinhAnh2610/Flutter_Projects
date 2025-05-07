@@ -41,6 +41,13 @@ class _GroceryListState extends State<GroceryList> {
         itemCount: _groceryItems.length,
         itemBuilder:
             (ctx, index) => Dismissible(
+              background: Container(
+                // ignore: deprecated_member_use
+                color: Colors.redAccent,
+                margin: EdgeInsets.symmetric(
+                  horizontal: 0,
+                ),
+              ),
               onDismissed: (direction) {
                 _removeItem(_groceryItems[index]);
               },
