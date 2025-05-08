@@ -1,3 +1,5 @@
+// ignore_for_file: deprecated_member_use
+
 import 'package:favourite_places/models/place.dart';
 import 'package:flutter/material.dart';
 
